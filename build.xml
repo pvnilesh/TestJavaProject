@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Compile and Run simple Java Project" default="runcode">
+  <property name="compile_dir" value="bin" />
+  <property name="src_dir" value="src" />
+	
+  <target name="clean">
+    <delete dir="${compile_dir}" />
+  </target>
+  
+  <target name="init" depends="clean">
+    <mkdir dir="${compile_dir}" />
+  </target>
+  
+  <target name="compile" depends="init">
+    <javac includeantruntime="false" srcdir="${src_dir}" destdir="${compile_dir}" />
+  </target>
+  
+  <target name="runcode" depends="compile">
+    <java classname="com.devops.MyClass" classpath="${compile_dir}" />
+  </target>
+</project>
